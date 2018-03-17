@@ -4,30 +4,30 @@ import './resultsList.css';
 
 //=========================
 const mapStateToProps = (state) => ({
-  results: state.results,
+  followers: state.followers,
   cache: state.cache,
 });
 
 //=========================
 class ResultsList extends React.Component {
 
-  createResultsList() {
-    let { results } = this.props;
-    let resultIds = Object.keys(results);
+  createFollowersList() {
+    let { followers } = this.props;
+    let followerIds = Object.keys(followers);
 
-    if (resultIds.length === 0) {
+    if (followerIds.length === 0) {
       return (
-        <li key={ "-99" }>No results found.</li>
+        <li key={ "-99" }>No followers found.</li>
       );
     }
 
-    return resultIds.map( (result) => {
+    return followerIds.map( (follower) => {
         return(
-          <li key={result}>
-            <img  src={results[result].avatar_url }
-                  alt={`avatar_img_${result}`}
+          <li key={follower}>
+            <img  src={followers[follower].avatar_url }
+                  alt={`avatar_img_${follower}`}
             />
-            <p>{ results[result].login }</p>
+          <p>{ followers[follower].login }</p>
           </li>
         );
     });
@@ -37,7 +37,7 @@ class ResultsList extends React.Component {
 
     return(
       <ul>
-        { this.createResultsList() }
+        { this.createFollowersList() }
       </ul>
     );
   }

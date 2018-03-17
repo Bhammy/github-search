@@ -1,12 +1,14 @@
 import { combineReducers } from 'redux';
 import search from './searchReducer';
-import results from './resultsReducer';
+import followers from './followersReducer';
+import users from './userReducer';
 import cache from './cacheReducer';
 import ui from './uiReducer';
 
 export default combineReducers({
   search,
-  results,
+  followers,
+  users,
   cache,
   ui
 });

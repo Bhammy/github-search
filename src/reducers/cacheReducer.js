@@ -1,9 +1,9 @@
-import { RECEIVE_RESULTS } from '../actions/searchActions';
+import { RECEIVE_FOLLOWERS } from '../actions/searchActions';
 
 const cacheReducer = (state = {}, action) => {
   switch (action.type) {
-    case RECEIVE_RESULTS:
-      return Object.assign({}, state, action.payload);
+    case RECEIVE_FOLLOWERS:
+      return Object.assign({}, state, { [action.page]: action.payload});
     default:
       return state;
   }

@@ -1,8 +1,8 @@
-import { RECEIVE_RESULTS } from '../actions/searchActions';
+import { RECEIVE_FOLLOWERS } from '../actions/searchActions';
 
 const resultsReducer = (state = {}, action) => {
   switch (action.type) {
-    case RECEIVE_RESULTS:
+    case RECEIVE_FOLLOWERS:
       return action.payload;
     default:
       return state;
