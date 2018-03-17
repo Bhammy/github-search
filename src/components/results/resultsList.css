@@ -1,9 +1,23 @@
-img {
+[class^='results__entry_'] img {
   width: 40px;
   height: auto;
+  border-radius: 40px;
 }
 
-li {
+li, ul {
+  padding: 0;
   margin: 0;
   list-style: none;
+}
+
+.results__container {
+  display: flex;
+  justify-content: center;
+}
+
+.results__entry_list {
+  display: flex;
+  flex-wrap: wrap;
+  width: 400px;
+  justify-content: center;
 }

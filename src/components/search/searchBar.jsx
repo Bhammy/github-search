@@ -1,6 +1,7 @@
 import React from 'react';
 import { searchUser, setSort } from '../../actions/searchActions';
 import { connect } from 'react-redux';
+import './searchBar.css';
 
 //=========================
 const mapDispatchToProps = dispatch => ({
@@ -33,7 +34,7 @@ class SearchBar extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="searchBar_main">
         <input type="text" onChange={ (e) => this.handleChange(e) }/><button onClick={ (e) => this.searchUser(e) }>Search</button>
         <p>Sort by:</p>
         <select id="customSort" onChange={ (e) => this.setSort(e.currentTarget.value) }>
