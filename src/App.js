@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Route, Link } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 import SearchBar from './components/search/searchBar';
+import ResultsList from './components/results/resultsList';
 import './App.css';
 
 class App extends Component {
@@ -12,6 +13,7 @@ class App extends Component {
             <h1 className="App-title">GITHUB USER SEARCH</h1>
           </header>
           <SearchBar />
+          <ResultsList />
         </div>
       </BrowserRouter>
     );

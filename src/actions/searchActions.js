@@ -21,8 +21,9 @@ export const receiveResults = (payload) => ({
 
 export const searchUser = search => async (dispatch, getState) => {
   dispatch(setSearch(search));
-  const payload = await SearchUtil.getUserData(search, getState().search.sortOrder);
-  let results = payload.items.reduce( (accum, current) => {
+  const { page } = getState().ui;
+  const payload = await SearchUtil.getUserData(search, page);
+  let results = payload.reduce( (accum, current) => {
     accum[current.id] = current;
     return accum
   }, {});

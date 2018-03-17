@@ -1,12 +1,12 @@
 import { RECEIVE_RESULTS } from '../actions/searchActions';
 
-const resultsReducer = (state = {}, action) => {
+const cacheReducer = (state = {}, action) => {
   switch (action.type) {
     case RECEIVE_RESULTS:
-      return action.payload;
+      return Object.assign({}, state, action.payload);
     default:
       return state;
   }
 };
 
-export default resultsReducer;
+export default cacheReducer;
