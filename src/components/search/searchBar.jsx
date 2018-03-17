@@ -37,10 +37,12 @@ class SearchBar extends React.Component {
 
   render() {
     return (
-      <div className="searchBar_main">
-        <form onClick={ (e) => this.searchUser(e) } >
-          <input type="text" onChange={ (e) => this.handleChange(e) }/>
-          <button type="submit">Search</button>
+      <div className="searchBar__main">
+        <form onSubmit={ (e) => this.searchUser(e) } className="searchBar__form" >
+          <input  type="text"
+                  onChange={ (e) => this.handleChange(e) }
+                  placeholder="Search Usernames"
+          />
         </form>
       </div>
     );

@@ -20,19 +20,27 @@ class UserData extends React.Component {
     if (searching) {
       return (
         <div>Searching...</div>
-      )
+      );
     } else if (user) {
       return (
-        <div className="results__user_header">
-          <img src={ user.avatar_url} alt="user_avatar_url"/>
-          <h2>{ user.login }</h2>
-          <section className="results__user_details">
-            <p>{ user.bio }</p>
-            <p>Followers: { user.followers }</p>
-            <p>Following: { user.following }</p>
-            <p>Location: { user.location }</p>
-            <p>Personal site: { user.blog }</p>
+        <div className="results__user_container">
+          <section className="results__user_header">
+            <h2>{ user.login }</h2>
           </section>
+          <div className="results__display">
+            <section className="results__left">
+              <img src={ user.avatar_url} alt="user_avatar_url"/>
+            </section>
+            <section className="results__right">
+              <section className="results__user_details">
+                <p>{ user.bio }</p>
+                <p>Followers: { user.followers }</p>
+                <p>Following: { user.following }</p>
+                <p>Location: { user.location || "None Listed" }</p>
+                <p>Personal site: { user.blog || "None Listed" }</p>
+              </section>
+            </section>
+          </div>
         </div>
       );
     } else {
