@@ -6,20 +6,25 @@ import './userData.css';
 const mapStateToProps = (state) => ({
   users: state.users,
   searchTerm: state.search.searchTerm,
+  searching: state.ui.searching,
 });
 
 //=========================
 class UserData extends React.Component {
 
   render() {
-    let { users, searchTerm } = this.props;
+    let { users, searchTerm, searching } = this.props;
     searchTerm = searchTerm ? searchTerm.toLowerCase() : searchTerm;
     let user = users[searchTerm];
 
-    if (user) {
+    if (searching) {
+      return (
+        <div>Searching...</div>
+      )
+    } else if (user) {
       return (
         <div className="results__user_header">
-          <img src={ user.avatar_url}/>
+          <img src={ user.avatar_url} alt="user_avatar_url"/>
           <h2>{ user.login }</h2>
           <section className="results__user_details">
             <p>{ user.bio }</p>

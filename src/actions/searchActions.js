@@ -15,8 +15,9 @@ export const setSort = sortOrder => ({
   sortOrder
 });
 
-export const receiveFollowers = (payload, page) => ({
+export const receiveFollowers = (userData, payload, page) => ({
   type: RECEIVE_FOLLOWERS,
+  userData,
   payload,
   page
 });
@@ -31,10 +32,16 @@ export const searchUser = search => async (dispatch, getState) => {
   const { page } = getState().ui;
   const userData = await SearchUtil.getUserData(search);
   const payload = await SearchUtil.getFollowerData(search, page);
+
+  if (payload.message) {
+    return;
+  }
+
   let results = payload.reduce( (accum, current) => {
     accum[current.id] = current;
     return accum
   }, {});
+
   dispatch(receiveUserData(userData));
-  dispatch(receiveFollowers(results, page));
+  dispatch(receiveFollowers(userData, results, page));
 };

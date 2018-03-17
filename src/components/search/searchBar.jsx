@@ -1,5 +1,6 @@
 import React from 'react';
 import { searchUser, setSort } from '../../actions/searchActions';
+import { setPage } from '../../actions/uiActions';
 import { connect } from 'react-redux';
 import './searchBar.css';
 
@@ -7,6 +8,7 @@ import './searchBar.css';
 const mapDispatchToProps = dispatch => ({
   searchUser: (search) => dispatch(searchUser(search)),
   setSort: (sortOrder) => dispatch(setSort(sortOrder)),
+  setPage: (page) => dispatch(setPage(page)),
 });
 
 
@@ -15,7 +17,7 @@ class SearchBar extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = { searchTerm: "", customSort: "" };
+    this.state = { searchTerm: "" };
   }
 
   handleChange(e) {
@@ -24,6 +26,7 @@ class SearchBar extends React.Component {
 
   searchUser(e) {
     e.preventDefault();
+    this.props.setPage(1);
     this.props.searchUser(this.state);
   }
 
@@ -35,14 +38,10 @@ class SearchBar extends React.Component {
   render() {
     return (
       <div className="searchBar_main">
-        <input type="text" onChange={ (e) => this.handleChange(e) }/><button onClick={ (e) => this.searchUser(e) }>Search</button>
-        <p>Sort by:</p>
-        <select id="customSort" onChange={ (e) => this.setSort(e.currentTarget.value) }>
-          <option value="" >Best match</option>
-          <option value="followers" >Number of Followers</option>
-          <option value="repositories" >Number of Repositories</option>
-          <option value="joined" >Most Recently Joined</option>
-        </select>
+        <form onClick={ (e) => this.searchUser(e) } >
+          <input type="text" onChange={ (e) => this.handleChange(e) }/>
+          <button type="submit">Search</button>
+        </form>
       </div>
     );
   }
