@@ -1,4 +1,5 @@
 import * as SearchUtil from '../util/searchUtil';
+import { setPage } from './uiActions';
 
 export const SET_SEARCH = "SET_SEARCH";
 export const RECEIVE_FOLLOWERS = "RECEIVE_FOLLOWERS";
@@ -39,10 +40,16 @@ export const receiveUserData = (userData) => ({
   userData
 });
 
+export const pullUserFromCache = searchTerm => (dispatch, getState) => {
+  dispatch(getCachedSearch(searchTerm));
+  dispatch(setPage(getState().users[searchTerm].page));
+}
+
 export const searchUser = search => async (dispatch, getState) => {
   dispatch(setSearch(search));
   const { page } = getState().ui;
   const userData = await SearchUtil.getUserData(search);
+  userData.page = page;
   const payload = await SearchUtil.getFollowerData(search, page);
 
   if (payload.message) {

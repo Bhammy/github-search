@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { setSearchHistory } from '../../actions/searchActions';
 import './userData.css';
 
 //=========================
@@ -19,7 +18,7 @@ class UserData extends React.Component {
     searchTerm = searchTerm ? searchTerm.toLowerCase() : searchTerm;
     let user = users[searchTerm];
 
-    if (searching) {
+    if (searching && !user) {
       return (
         <div>Searching...</div>
       );
@@ -54,4 +53,4 @@ class UserData extends React.Component {
   }
 }
 
-export default connect(mapStateToProps, dispatch => ({ setSearchHistory: (term) => dispatch(setSearchHistory(term)) }))(UserData);
+export default connect(mapStateToProps)(UserData);

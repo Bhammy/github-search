@@ -1,25 +1,33 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { getCachedSearch } from '../../actions/searchActions';
+import { pullUserFromCache, setSearchHistory } from '../../actions/searchActions';
+import './searchHistory.css';
 
 //=========================
+const mapStateToProps = state => ({
+  history: state.cache.searchHistory
+});
+
 const mapDispatchToProps = dispatch => ({
-  getCachedSearch: (searchTerm) => dispatch(getCachedSearch(searchTerm)),
+  pullUserFromCache: (searchTerm) => dispatch(pullUserFromCache(searchTerm)),
+  setSearchHistory: (searchTerm) => dispatch(setSearchHistory(searchTerm)),
 });
 
 //=========================
 class SearchHistory extends React.Component {
 
   loadCachedResults(searchTerm) {
-    this.props.getCachedSearch(searchTerm);
+    this.props.pullUserFromCache(searchTerm);
+    this.props.setSearchHistory(searchTerm);
   }
 
   createSearchHistory() {
-    return this.props.history.map( (searchTerm) => {
+    let reversedHist = this.props.history.slice(0).reverse();
+    return reversedHist.map( (searchTerm) => {
       return <li key={ searchTerm }
         onClick={ () => this.loadCachedResults(searchTerm.toLowerCase()) }
       >
-        { searchTerm }
+        <a>{ searchTerm }</a>
       </li>;
     });
   }
@@ -33,4 +41,4 @@ class SearchHistory extends React.Component {
   }
 }
 
-export default connect(state => ({ history: state.cache.searchHistory.reverse() }), mapDispatchToProps)(SearchHistory);
+export default connect(mapStateToProps, mapDispatchToProps)(SearchHistory);

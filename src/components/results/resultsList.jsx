@@ -46,6 +46,7 @@ class ResultsList extends React.Component {
           <li key={follower} className={`results__entry_${follower}`}>
             <img  src={followers[follower].avatar_url }
                   alt={`avatar_img_${follower}`}
+                  title={ `${followers[follower].login}` }
                   onClick={ () => this.searchUser(followers[follower].login) }
             />
           </li>
@@ -82,10 +83,12 @@ class ResultsList extends React.Component {
     if (user) {
       return(
         <div className="results__container">
+          <div className="results__button">
+            { (followerIds.length < user.followers) ? moreButton : null }
+          </div>
           <ul className="results__entry_list">
             { this.createFollowersList() }
           </ul>
-          { (followerIds.length < user.followers) ? moreButton : null }
         </div>
       );
     } else {

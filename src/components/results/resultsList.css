@@ -7,7 +7,7 @@
 
 [class^='results__entry_'] img:hover {
   cursor: pointer;
-  box-shadow: 0 0 10px 5px #DEF9EB;
+  box-shadow: 0 0 10px 10px #DEF9EB;
 }
 
 li, ul {
@@ -20,9 +20,33 @@ li, ul {
   width: 100%;
 }
 
+.results__more_button {
+  box-sizing: border-box;
+  width: 100px;
+  border: none;
+  font-size: 14px;
+  margin-bottom: 15px;
+  border-bottom: 3px solid #ffffff;
+}
+
+.results__more_button:hover {
+  border-bottom: 3px solid #DEF9EB;
+  cursor: pointer;
+}
+
+.results__more_button:focus {
+  outline: none;
+}
+
 .results__container {
+  width: 400px;
   display: flex;
-  justify-content: center;
+  flex-wrap: wrap;
+  margin: auto;
+}
+
+.results__button {
+  margin: auto;
 }
 
 .results__entry_list {
