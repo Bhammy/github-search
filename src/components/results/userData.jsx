@@ -13,17 +13,6 @@ const mapStateToProps = (state) => ({
 //=========================
 class UserData extends React.Component {
 
-  componentWillReceiveProps(newProps) {
-    let { users, searchTerm, searching } = this.props;
-    searchTerm = searchTerm ? searchTerm.toLowerCase() : searchTerm;
-    let user = users[searchTerm];
-
-    if (user) {
-      this.props.setSearchHistory(user.login);
-    }
-
-  }
-
   render() {
 
     let { users, searchTerm, searching } = this.props;

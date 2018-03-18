@@ -55,5 +55,6 @@ export const searchUser = search => async (dispatch, getState) => {
   }, {});
 
   dispatch(receiveUserData(userData));
+  dispatch(setSearchHistory(userData.login));
   dispatch(receiveFollowers(userData, results, page));
 };
