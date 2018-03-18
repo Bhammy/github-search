@@ -7,6 +7,9 @@ export const getUserData = async (search) => {
     },
     method: 'GET',
   });
+  if (!response.ok) {
+    return { message: "bad response" };
+  }
   const payload = await response.json();
   return payload;
 }

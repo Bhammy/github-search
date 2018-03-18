@@ -53,6 +53,7 @@ export const searchUser = search => async (dispatch, getState) => {
   const payload = await SearchUtil.getFollowerData(search, page);
 
   if (payload.message) {
+    dispatch(receiveUserData({ login: "" }));
     return;
   }
 
