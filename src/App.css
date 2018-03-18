@@ -16,3 +16,14 @@
 .App-intro {
   font-size: large;
 }
+
+.app_body {
+  display: grid;
+  width: 100%;
+  grid-template-columns: 1fr 4fr;
+}
+
+.prev_searches__container {
+  background-color: #F7F5EC;
+  min-height: 100vw;
+}

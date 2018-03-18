@@ -16,7 +16,6 @@ const mapStateToProps = (state) => {
   return {
     followers: followers,
     followerIds: followerIds,
-    search: state.search,
     searchTerm: state.search.searchTerm,
     users: state.users,
     cache: state.cache,
@@ -62,7 +61,7 @@ class ResultsList extends React.Component {
   loadMore(e) {
     e.preventDefault();
     this.props.loadMore();
-    this.props.searchUser(this.props.search);
+    this.props.searchUser({ searchTerm: this.props.searchTerm });
   }
 
   render() {

@@ -4,11 +4,23 @@ export const SET_SEARCH = "SET_SEARCH";
 export const RECEIVE_FOLLOWERS = "RECEIVE_FOLLOWERS";
 export const RECEIVE_USER_DATA = "RECEIVE_USER_DATA";
 export const SET_SORT_ORDER = "SET_SORT_ORDER"
+export const GET_CACHED_SEARCH = "GET_CACHED_SEARCH";
+export const SET_SEARCH_HISTORY = "SET_SEARCH_HISTORY";
 
 export const setSearch = ({ searchTerm }) => ({
   type: SET_SEARCH,
   searchTerm
 });
+
+export const getCachedSearch = (searchTerm) => ({
+  type: GET_CACHED_SEARCH,
+  searchTerm
+});
+
+export const setSearchHistory = (searchTerm) => ({
+  type: SET_SEARCH_HISTORY,
+  searchTerm
+})
 
 export const setSort = sortOrder => ({
   type: SET_SORT_ORDER,

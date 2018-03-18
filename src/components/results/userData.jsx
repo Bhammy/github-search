@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { setSearchHistory } from '../../actions/searchActions';
 import './userData.css';
 
 //=========================
@@ -12,7 +13,19 @@ const mapStateToProps = (state) => ({
 //=========================
 class UserData extends React.Component {
 
+  componentWillReceiveProps(newProps) {
+    let { users, searchTerm, searching } = this.props;
+    searchTerm = searchTerm ? searchTerm.toLowerCase() : searchTerm;
+    let user = users[searchTerm];
+
+    if (user) {
+      this.props.setSearchHistory(user.login);
+    }
+
+  }
+
   render() {
+
     let { users, searchTerm, searching } = this.props;
     searchTerm = searchTerm ? searchTerm.toLowerCase() : searchTerm;
     let user = users[searchTerm];
@@ -22,6 +35,7 @@ class UserData extends React.Component {
         <div>Searching...</div>
       );
     } else if (user) {
+
       return (
         <div className="results__user_container">
           <section className="results__user_header">
@@ -51,4 +65,4 @@ class UserData extends React.Component {
   }
 }
 
-export default connect(mapStateToProps)(UserData);
+export default connect(mapStateToProps, dispatch => ({ setSearchHistory: (term) => dispatch(setSearchHistory(term)) }))(UserData);
