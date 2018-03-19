@@ -22,9 +22,9 @@ li, ul {
 
 .results__more_button {
   box-sizing: border-box;
-  width: 100px;
+  width: 130px;
   border: none;
-  font-size: 14px;
+  font-size: 20px;
   margin-bottom: 15px;
   border-bottom: 3px solid #ffffff;
 }

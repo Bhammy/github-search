@@ -71,7 +71,7 @@ class ResultsList extends React.Component {
         className="results__more_button"
         onClick={ (e) => this.loadMore(e) }
       >
-      Load More
+      <strong>Load More</strong>
       </button>;
 
       let { users, searchTerm, followerIds } = this.props;
