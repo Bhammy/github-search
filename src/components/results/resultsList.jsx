@@ -55,6 +55,7 @@ class ResultsList extends React.Component {
   }
 
   searchUser(username) {
+    // reset page count to 1 for new user;
     this.props.setPage(1);
     this.props.searchUser({ searchTerm: username });
   }

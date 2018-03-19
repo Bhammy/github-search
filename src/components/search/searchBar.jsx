@@ -1,5 +1,5 @@
 import React from 'react';
-import { searchUser, setSort } from '../../actions/searchActions';
+import { searchUser } from '../../actions/searchActions';
 import { setPage } from '../../actions/uiActions';
 import { connect } from 'react-redux';
 import './searchBar.css';
@@ -7,7 +7,6 @@ import './searchBar.css';
 //=========================
 const mapDispatchToProps = dispatch => ({
   searchUser: (search) => dispatch(searchUser(search)),
-  setSort: (sortOrder) => dispatch(setSort(sortOrder)),
   setPage: (page) => dispatch(setPage(page)),
 });
 
@@ -26,13 +25,9 @@ class SearchBar extends React.Component {
 
   searchUser(e) {
     e.preventDefault();
+    // on search of new user, set page to 1;
     this.props.setPage(1);
     this.props.searchUser(this.state);
-  }
-
-  setSort(sortVal) {
-    this.props.setSort(sortVal);
-    this.setState({ customSort: `&sort=${sortVal}` });
   }
 
   render() {

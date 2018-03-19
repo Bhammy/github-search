@@ -22,6 +22,7 @@ class SearchHistory extends React.Component {
   }
 
   createSearchHistory() {
+    // copy history so as not to reverse state
     let reversedHist = this.props.history.slice(0).reverse();
     return reversedHist.map( (searchTerm) => {
       return <li key={ searchTerm }

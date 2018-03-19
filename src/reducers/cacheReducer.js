@@ -5,10 +5,12 @@ const cacheReducer = (state = { searchHistory: [] }, action) => {
     case SET_SEARCH_HISTORY:
       let newHistory = [];
       let pushTerm = action.searchTerm;
+      // copy search history, checking to see if current searchTerm is in array
       state.searchHistory.forEach( (item) => {
         if (item.toLowerCase() !== action.searchTerm.toLowerCase()) {
           newHistory.push(item);
         } else if (item.toLowerCase() === action.searchTerm.toLowerCase()) {
+          // if searchTerm exists in array, use it instead of searchTerm (keeps username capitalized)
           pushTerm = item;
         }
       });
